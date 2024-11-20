@@ -29,6 +29,7 @@ public class BackedServiceHandler : MonoBehaviour
     void Awake()
     {
         instance = this;
+
     }
 
    

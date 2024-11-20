@@ -123,15 +123,15 @@ public class MenuManager : MonoBehaviour
     public void Cancle()
     {
         OTPUIBackground.SetActive(false);
-        BackedServiceHandler.instance.emailInputField.text = "";
+        BackedServiceHandler.instance.emailInputField.text = null;
         enterNameParent.SetActive(true);
     }
 
     public void GotoLoginPage()
     {
         playUIParent.SetActive(false);
-        BackedServiceHandler.instance.emailInputField.text = "";
-        BackedServiceHandler.instance.otpInputField.text = "";
+        BackedServiceHandler.instance.emailInputField.text = null;
+        BackedServiceHandler.instance.otpInputField.text = null;
         enterNameParent.SetActive(true);
     }
 
