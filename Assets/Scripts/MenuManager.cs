@@ -120,4 +120,19 @@ public class MenuManager : MonoBehaviour
         
     }
 
+    public void Cancle()
+    {
+        OTPUIBackground.SetActive(false);
+        BackedServiceHandler.instance.emailInputField.text = "";
+        enterNameParent.SetActive(true);
+    }
+
+    public void GotoLoginPage()
+    {
+        playUIParent.SetActive(false);
+        BackedServiceHandler.instance.emailInputField.text = "";
+        BackedServiceHandler.instance.otpInputField.text = "";
+        enterNameParent.SetActive(true);
+    }
+
 }

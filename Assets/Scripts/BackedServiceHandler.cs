@@ -54,6 +54,8 @@ public class BackedServiceHandler : MonoBehaviour
 
     IEnumerator SendOTPTask(string email)
     {
+        otpInputField.text = "";
+
         string url = $"https://app.startuped.ai/api/User/GetOTP?Email={email}";
         using (UnityWebRequest request = UnityWebRequest.Get(url))
         {
@@ -86,7 +88,7 @@ public class BackedServiceHandler : MonoBehaviour
 
     IEnumerator VerifyOTPTask(string email, string otp)
     {
-        string url = $"https://app.startuped.ai/api/User/VerifyOTP?Email={email}&OTP={otp}";
+        string url = $"https://app.startuped.ai/api/User/VerifyOTP?EmailOrContactNumber={email}&OTP={otp}";
 
        // ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => true;
 
@@ -123,6 +125,7 @@ public class BackedServiceHandler : MonoBehaviour
             }
         }
     }
+
 
 
     public Text walletAmountText;
