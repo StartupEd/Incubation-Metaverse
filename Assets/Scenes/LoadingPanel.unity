@@ -453,6 +453,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: LoadingPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 1420721987727938081, guid: cf1a706a42a89a44baea8b4d30c26cb9,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2358010458690277393, guid: cf1a706a42a89a44baea8b4d30c26cb9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2674459076885647802, guid: cf1a706a42a89a44baea8b4d30c26cb9,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5191003484321075024, guid: cf1a706a42a89a44baea8b4d30c26cb9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -502,6 +517,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8860718407311711703, guid: cf1a706a42a89a44baea8b4d30c26cb9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8860718407311711703, guid: cf1a706a42a89a44baea8b4d30c26cb9,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8860718407311711703, guid: cf1a706a42a89a44baea8b4d30c26cb9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.0000038146973
+      objectReference: {fileID: 0}
+    - target: {fileID: 8860718407311711703, guid: cf1a706a42a89a44baea8b4d30c26cb9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 302.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

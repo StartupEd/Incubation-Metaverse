@@ -65,7 +65,9 @@ public class BackedServiceHandler : MonoBehaviour
             }
             else
             {
+
                 Debug.Log("OTP sent successfully.");
+                //Debug.Log("OTP is " result);
                 MenuManager.instance.LoginUI.SetActive(false);
                 MenuManager.instance.OTPUIBackground.SetActive(true);
                 //MenuManager.instance;

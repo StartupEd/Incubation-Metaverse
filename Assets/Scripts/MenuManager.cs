@@ -18,7 +18,7 @@ public class MenuManager : MonoBehaviour
     void Awake()
     {
         instance = this;
-        playUIParent.SetActive(true);
+        //playUIParent.SetActive(true);
     }
     // Start is called before the first frame update
     void Start()
