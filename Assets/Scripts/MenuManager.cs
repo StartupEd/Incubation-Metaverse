@@ -129,10 +129,13 @@ public class MenuManager : MonoBehaviour
 
     public void GotoLoginPage()
     {
+        PlayerPrefs.SetInt("IsLoggedIn", 0); // Reset login state
+        PlayerPrefs.Save();
         playUIParent.SetActive(false);
         BackedServiceHandler.instance.emailInputField.text = null;
         BackedServiceHandler.instance.otpInputField.text = null;
         enterNameParent.SetActive(true);
+
     }
 
 }

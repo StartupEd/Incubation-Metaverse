@@ -700,7 +700,7 @@ PrefabInstance:
     - target: {fileID: 2464928698800345508, guid: 0d383b74b603c234cb79008d892af9cb,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -5.9995117
+      value: -5.9993896
       objectReference: {fileID: 0}
     - target: {fileID: 2521009973777697539, guid: 0d383b74b603c234cb79008d892af9cb,
         type: 3}
@@ -988,7 +988,7 @@ PrefabInstance:
     - target: {fileID: 5862488236049812081, guid: 0d383b74b603c234cb79008d892af9cb,
         type: 3}
       propertyPath: m_Text
-      value: Login Page
+      value: Logout
       objectReference: {fileID: 0}
     - target: {fileID: 5862488236049812081, guid: 0d383b74b603c234cb79008d892af9cb,
         type: 3}
