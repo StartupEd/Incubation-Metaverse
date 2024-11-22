@@ -135,7 +135,7 @@ public class BackedServiceHandler : MonoBehaviour
                     PlayerPrefs.SetInt("IsLoggedIn", 1); // Save login state
                     MenuManager.instance.EnterDetailsUI.SetActive(true);
                     MenuManager.instance.OTPUIBackground.SetActive(false);
-                    //MenuManager.instance.playUIParent.SetActive(true);
+                  
                     MenuManager.instance.mainmenuUI.SetActive(true);
                     MenuManager.instance.VideoPanel.SetActive(true);
                     wallet();
@@ -280,13 +280,13 @@ public class BackedServiceHandler : MonoBehaviour
 
 
 
-            [System.Serializable]
-            public class SpendAmount
-    {
+     [System.Serializable]
+     public class SpendAmount
+     {
         public int value;
         public int currentValue;
-
-    }
+ 
+     }
 
 
     public void Logout()
