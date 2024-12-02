@@ -32,7 +32,24 @@ public class BackedServiceHandler : MonoBehaviour
 
     }
 
-   
+    void Start()
+    {
+        checkLoginStatus();
+    }
+
+   void checkLoginStatus()
+   {
+        if (PlayerPrefs.HasKey("IsLoggedIn") && PlayerPrefs.GetInt("IsLoggedIn") == 1)
+        {
+            // User is already logged in, skip login and go to main menu
+            SkipToMainMenu();
+        }
+        else
+        {
+            // Show login UI
+            MenuManager.instance.LoginUI.SetActive(true);
+        }
+   }
 
     public void ValidateEmailAndRequestOTP()
     {
@@ -115,9 +132,10 @@ public class BackedServiceHandler : MonoBehaviour
                 else
                 {
                     Debug.Log("OTP verification successful.");
+                    PlayerPrefs.SetInt("IsLoggedIn", 1); // Save login state
                     MenuManager.instance.EnterDetailsUI.SetActive(true);
                     MenuManager.instance.OTPUIBackground.SetActive(false);
-                    //MenuManager.instance.playUIParent.SetActive(true);
+                  
                     MenuManager.instance.mainmenuUI.SetActive(true);
                     MenuManager.instance.VideoPanel.SetActive(true);
                     wallet();
@@ -168,30 +186,7 @@ public class BackedServiceHandler : MonoBehaviour
     }
 
    
-    [Serializable]
-    public class WalletData : BaseModel
-    {
-        public Dictionary<string, int> Wallets { get; set; }
-        public string? UserId { get; set; }   // Foregin Key
-
-        // Reference not is use in a REST based transactional only system
-    }
-
-    [Serializable]
-    public abstract class BaseModel
-    {
-
-        public string Id { get; set; }             // Unique & Primary (Also, used as Foreign Key by other Models) // Created DateTime is already hashed inside.
-        public string? Name { get; set; }
-
-        public string Email { get; set; }
-        // Generic Name Descriptors
-        public DateTime? UpdatedAt { get; set; }
-    }
-
-
-
-
+   
     public string currency;
     public int newAmount;
 
@@ -285,26 +280,59 @@ public class BackedServiceHandler : MonoBehaviour
 
 
 
-            [System.Serializable]
-            public class SpendAmount
-    {
+     [System.Serializable]
+     public class SpendAmount
+     {
         public int value;
         public int currentValue;
+ 
+     }
 
+
+    public void Logout()
+    {
+        PlayerPrefs.SetInt("IsLoggedIn", 0); // Reset login state
+        PlayerPrefs.Save();
+
+        MenuManager.instance.LoginUI.SetActive(true);
+        MenuManager.instance.mainmenuUI.SetActive(false);
+        MenuManager.instance.EnterDetailsUI.SetActive(false);
     }
 
-
-   public void PlayGames()
+    void SkipToMainMenu()
     {
         MenuManager.instance.LoginUI.SetActive(false);
-       // MenuManager.instance.playUIParent.SetActive(true);
-       // MenuManager.instance.mainmenuUI.SetActive(false);
+        MenuManager.instance.mainmenuUI.SetActive(true);
+       // MenuManager.instance.VideoPanel.SetActive(true);
+        wallet();
+       // StartVideo.instance.PlayStart();
+    }
 
-
+    public void PlayGames()
+    {
+        MenuManager.instance.LoginUI.SetActive(false);
         MenuManager.instance.EnterDetailsUI.SetActive(false);
-       // MenuManager.instance.OTPUIBackground.SetActive(false);
         MenuManager.instance.playUIParent.SetActive(true);
-       // MenuManager.instance.mainmenuUI.SetActive(false);
     }
 }
-       
+
+[Serializable]
+public class WalletData : BaseModel
+{
+    public Dictionary<string, int> Wallets { get; set; }
+    public string? UserId { get; set; } 
+}
+
+[Serializable]
+public abstract class BaseModel
+{
+
+    public string Id { get; set; }             
+    public string? Name { get; set; }
+
+    public string Email { get; set; }
+    public DateTime? UpdatedAt { get; set; }
+}
+
+
+
