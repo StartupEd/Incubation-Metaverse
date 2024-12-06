@@ -22,14 +22,16 @@ public class BackedServiceHandler : MonoBehaviour
     public TMP_Text otpErrorMessageText;
     public InputField otpInputField;
     public TMP_Text insufMessageText;
+    public Text walletAmountText;
+    public string currency;
+    public int newAmount;
 
-    private string email;
 
+    public int UpdateAmount;
 
     void Awake()
     {
         instance = this;
-
     }
 
     void Start()
@@ -147,10 +149,10 @@ public class BackedServiceHandler : MonoBehaviour
 
 
 
-    public Text walletAmountText;
+   
     // public string apiEndpoint = "https://wizar.startuped.xyz/api/v1/Wallet/Email/";
 
-    public int UpdateAmount;
+   
 
     public void wallet()
     {
@@ -160,8 +162,9 @@ public class BackedServiceHandler : MonoBehaviour
     IEnumerator FetchWalletAmount()
     {
         string email = emailInputField.text;
-        string apihitpoint = "https://admin.wizar.io/api/v1/Wallet/Email/" + email;
-        Debug.Log(apihitpoint + email);
+        string apihitpoint = $"https://admin.wizar.io/api/v1/Wallet/Email/{email}";
+        Debug.Log("Fetching wallet amount from: " + apihitpoint);
+
         using (UnityWebRequest webRequest = UnityWebRequest.Get(apihitpoint))
         {
             yield return webRequest.SendWebRequest();
@@ -173,22 +176,34 @@ public class BackedServiceHandler : MonoBehaviour
             }
             else
             {
-
                 string jsonResponse = webRequest.downloadHandler.text;
-                //string mockjsonResponse = @"{}";
+                Debug.Log("Response: " + jsonResponse);
 
-                WalletData wallets = JsonConvert.DeserializeObject<WalletData>(jsonResponse);
-                UpdateAmount = wallets.Wallets["Ipt"];
-                walletAmountText.text = "$" + UpdateAmount.ToString();
+                try
+                {
+                    WalletData wallets = JsonConvert.DeserializeObject<WalletData>(jsonResponse);
 
+                    if (wallets != null && wallets.Wallets != null && wallets.Wallets.ContainsKey("Ipt"))
+                    {
+                        UpdateAmount = wallets.Wallets["Ipt"];
+                        walletAmountText.text = "$" + UpdateAmount.ToString();
+                    }
+                    else
+                    {
+                        Debug.LogError("Wallet data is null or key 'Ipt' not found.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogError("Deserialization failed: " + ex.Message);
+                }
             }
         }
     }
 
    
    
-    public string currency;
-    public int newAmount;
+   
 
     public void SubmitIptButton()
     {
@@ -328,7 +343,7 @@ public abstract class BaseModel
 {
 
     public string Id { get; set; }             
-    public string? Name { get; set; }
+    public string ? Name { get; set; }
 
     public string Email { get; set; }
     public DateTime? UpdatedAt { get; set; }
