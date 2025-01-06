@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/LoginPage.unity
+    guid: ceabf93ad068fef41b017345b61bddf9
+  - enabled: 1
+    path: Assets/Scenes/LoadingPanel.unity
+    guid: c4b992c3cb3a2574892102e65b1af4bb
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 15ab5c3863a9d3d43841a9d858851229,
+      type: 2}
