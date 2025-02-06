@@ -12,5 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/LoadingPanel.unity
     guid: c4b992c3cb3a2574892102e65b1af4bb
   m_configObjects:
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 2ed812d092a76df4daf3cee27e025830,
+      type: 2}
+    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000,
+      guid: 2b0f3c54561ae074682e9bd3d9e2e55f, type: 2}
     com.unity.addressableassets: {fileID: 11400000, guid: 15ab5c3863a9d3d43841a9d858851229,
       type: 2}

@@ -37,6 +37,7 @@ public class BackedServiceHandler : MonoBehaviour
     void Start()
     {
         checkLoginStatus();
+        wallet();
     }
 
    void checkLoginStatus()
@@ -140,7 +141,7 @@ public class BackedServiceHandler : MonoBehaviour
                   
                     MenuManager.instance.mainmenuUI.SetActive(true);
                     MenuManager.instance.VideoPanel.SetActive(true);
-                    wallet();
+                    
                     StartVideo.instance.PlayStart();
                 }
             }
@@ -162,7 +163,7 @@ public class BackedServiceHandler : MonoBehaviour
     IEnumerator FetchWalletAmount()
     {
         string email = emailInputField.text;
-        string apihitpoint = $"https://admin.wizar.io/api/v1/Wallet/Email/{email}";
+        string apihitpoint = $"https://app.startuped.ai/api/v1/Wallet/Email/{email}";
         Debug.Log("Fetching wallet amount from: " + apihitpoint);
 
         using (UnityWebRequest webRequest = UnityWebRequest.Get(apihitpoint))
@@ -217,7 +218,7 @@ public class BackedServiceHandler : MonoBehaviour
 
     IEnumerator SendUpdateRequest(string email, string currency, int newAmount)
     {
-        string apiUrl = $"https://admin.wizar.io/api/v1/Wallet/Email={email}/Deposit/Currency={currency}&Amount={newAmount}";
+        string apiUrl = $"https://app.startuped.ai/api/v1/Wallet/Email={email}/Deposit/Currency={currency}&Amount={newAmount}";
 
         Debug.Log("Here");
         UnityWebRequest request = UnityWebRequest.Put(apiUrl, ""); // The second argument should be the data you want to send, but in this case, it's empty.
@@ -346,6 +347,7 @@ public abstract class BaseModel
     public string ? Name { get; set; }
 
     public string Email { get; set; }
+
     public DateTime? UpdatedAt { get; set; }
 }
 
